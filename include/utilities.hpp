@@ -187,5 +187,3 @@ bool directory_exists( const std::string& path );
 bool make_directory( const std::string& path, mode_t mode );
 
 }  // end namespace.
-
-#endif
