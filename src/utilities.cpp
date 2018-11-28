@@ -78,3 +78,17 @@ bool utilities::make_directory( const std::string& path, mode_t mode )
     
     return ( status );
 }
+
+Timer::Timer()
+    : beg_(clock_::now())
+{}
+
+void Timer::reset() 
+{ 
+    beg_ = clock_::now(); 
+}
+
+double Timer::elapsed() const
+{ 
+    return std::chrono::duration_cast<second_> (clock_::now() - beg_).count();
+}

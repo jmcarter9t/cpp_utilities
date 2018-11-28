@@ -8,6 +8,8 @@
 #include <unordered_map>
 #include <unordered_set>
 #include <limits>
+#include <iostream>
+#include <chrono>
 
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -187,3 +189,18 @@ bool directory_exists( const std::string& path );
 bool make_directory( const std::string& path, mode_t mode );
 
 }  // end namespace.
+
+class Timer
+{
+	public:
+		Timer();
+		void reset();
+		double elapsed() const;
+
+	private:
+		typedef std::chrono::high_resolution_clock clock_;
+		typedef std::chrono::duration<double, std::ratio<1> > second_;
+		std::chrono::time_point<clock_> beg_;
+};
+
+
