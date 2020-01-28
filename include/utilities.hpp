@@ -57,6 +57,7 @@ std::ostream& operator<<(std::ostream& os, const std::vector<X>& v)
 namespace utilities {
 
 extern const std::string DELIMITERS;
+extern const std::string QUOTES;
 
 /**
  * \brief split the provided string at every occurrence of delim and put the results in the templated type t.
