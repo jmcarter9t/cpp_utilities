@@ -32,7 +32,7 @@ std::string utilities::string_replace(const std::string& str, const std::string&
     return newstr;
 }
 
-std::string& utilities::dequote( const std::string& s )
+std::string& utilities::dequote( std::string& s )
 {
   s.erase( s.find_last_not_of( utilities::QUOTES ) + 1 );
   return s.erase( 0, s.find_first_not_of( utilities::QUOTES ) );
