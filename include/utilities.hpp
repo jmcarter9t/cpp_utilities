@@ -60,6 +60,13 @@ extern const std::string DELIMITERS;
 extern const std::string QUOTES;
 
 /**
+ * Makes a copy of str and then replaces all occurrences of match with replacement.
+ *
+ * Returns the new string.
+ */
+std::string string_replace(const std::string& str, const std::string& match, const std::string& replacement, unsigned int max_replacements = std::numeric_limits<unsigned int>::max() );
+
+/**
  * \brief split the provided string at every occurrence of delim and put the results in the templated type t.
  *
  * \param s the string to split.

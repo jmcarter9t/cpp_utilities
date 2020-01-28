@@ -17,7 +17,22 @@ StrVector utilities::split(const std::string &s, char delim)
     return elems;
 }
     
-std::string& dequote( const std::string& x )
+std::string utilities::string_replace(const std::string& str, const std::string& match, const std::string& replacement, unsigned int max_replacements )
+{
+    size_t pos = 0;
+    std::string newstr = str;
+    unsigned int replacements = 0;
+    while ((pos = newstr.find(match, pos)) != std::string::npos
+            && replacements < max_replacements)
+    {
+         newstr.replace(pos, match.length(), replacement);
+         pos += replacement.length();
+         replacements++;
+    }
+    return newstr;
+}
+
+std::string& utilities::dequote( const std::string& x )
 {
   s.erase( s.find_last_not_of( utilities::QUOTES ) + 1 );
   return s.erase( 0, s.find_first_not_of( utilities::QUOTES ) );
