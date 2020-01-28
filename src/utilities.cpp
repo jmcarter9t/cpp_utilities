@@ -3,6 +3,7 @@
 #include <cmath>
 
 const std::string utilities::DELIMITERS = " \f\n\r\t\v";
+const std::string utilities::QUOTES = "\"\'";
 
 std::size_t UInt64PairHash::operator()( const UInt64Pair& p ) const 
 {
@@ -16,6 +17,12 @@ StrVector utilities::split(const std::string &s, char delim)
     return elems;
 }
     
+std::string& dequote( const std::string& x )
+{
+  s.erase( s.find_last_not_of( utilities::QUOTES ) + 1 );
+  return s.erase( 0, s.find_first_not_of( utilities::QUOTES ) );
+}
+
 std::string& utilities::rstrip( std::string& s )
 {
   return s.erase( s.find_last_not_of( utilities::DELIMITERS ) + 1 );

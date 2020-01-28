@@ -75,6 +75,8 @@ template<typename T>
         }
     }
 
+std::string& dequote( const std::string& x, char quote = '"' );
+
 /**
  * \brief Split the provided string at every occurrence of delim and return the components in a vector of strings.
  *
