@@ -213,4 +213,9 @@ class Timer
 		std::chrono::time_point<clock_> beg_;
 };
 
+class BinarySearch
+{
+    public:
+        static int find( std::pair<int,int> interval, const std::vector<int>& v );
+};
 

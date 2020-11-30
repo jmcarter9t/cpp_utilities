@@ -114,3 +114,37 @@ double Timer::elapsed() const
 { 
     return std::chrono::duration_cast<second_> (clock_::now() - beg_).count();
 }
+
+int BinarySearch::find( std::pair<int,int> interval, const std::vector<int>& v )
+{
+    int left = 0;
+    int right = v.size();
+
+    if ( interval.first < interval.second )
+    {
+        // the [x,y) interval is defined properly -- not empty.
+        while (left <= right)
+        {
+            size_t mid = left + (right-left)/2;
+
+            if ( interval.first <= v[mid] && v[mid] < interval.second )
+            {
+                // value in the interval: [first, second)
+                return v[mid];
+            }
+
+            if (v[mid] < interval.first)
+            {
+                // value is less than the left closed interval bounds; move left search point.
+                left = mid + 1;
+            }
+            else // v[mid] not within interval and v[mid] >= interval.first
+            {
+                right = mid - 1;
+            }
+        }
+    }
+
+    // if we reach here, then element was not present
+    return -1;
+}
